@@ -6,8 +6,9 @@
         <artifactId>feature-demo</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>cglib-demo</artifactId>
+    <artifactId>common</artifactId>
     <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
@@ -28,10 +29,6 @@
             <groupId>org.scala-lang.modules</groupId>
             <artifactId>scala-swing_${scala.binary.version}</artifactId>
             <version>2.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
         </dependency>
     </dependencies>
 
