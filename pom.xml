@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.test.jvmargs>-Xmx512m -Xms256m -XX:MaxPermSize=128m -Dfile.encoding=UTF-8</maven.test.jvmargs>
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
         <scala.version>2.11.8</scala.version>
@@ -23,6 +24,7 @@
         <jackson.version>2.9.1</jackson.version>
         <cglib.version>3.2.5</cglib.version>
         <antlr4.version>4.5.3</antlr4.version>
+        <quartz.version>2.3.0</quartz.version>
         <logback.version>1.2.3</logback.version>
         <scala.test.version>3.0.1</scala.test.version>
         <junit.version>4.12</junit.version>
@@ -116,6 +118,11 @@
                 <artifactId>jackson-datatype-jsr310</artifactId>
                 <version>2.9.1</version>
             </dependency>
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -147,7 +154,7 @@
                 <configuration>
                     <parallel>methods</parallel>
                     <threadCount>10</threadCount>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                    <argLine>${maven.test.jvmargs}</argLine>
                     <skipTests>false</skipTests>
                 </configuration>
             </plugin>
