@@ -1,13 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.wbq</groupId>
         <artifactId>feature-demo</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>common</artifactId>
-    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>antlr4</artifactId>
 
     <dependencies>
         <dependency>
@@ -26,11 +25,18 @@
             <groupId>org.scala-lang.modules</groupId>
             <artifactId>scala-swing_${scala.binary.version}</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest-maven-plugin</artifactId>

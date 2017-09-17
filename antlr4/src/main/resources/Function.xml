@@ -1,0 +1,10 @@
+<Functions>
+    <Function>
+        <Schema>SIN(NumColumn)</Schema>
+        <Discription></Discription>
+        <GenCode>sin($1)</GenCode>
+    </Function>
+    <Function>
+
+    </Function>
+</Functions>
