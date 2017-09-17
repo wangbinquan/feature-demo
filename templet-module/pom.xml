@@ -26,6 +26,11 @@
             <groupId>org.scala-lang.modules</groupId>
             <artifactId>scala-swing_${scala.binary.version}</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wbq</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 

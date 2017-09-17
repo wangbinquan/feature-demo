@@ -4,9 +4,7 @@ import org.junit.Assert
 import org.scalatest.FunSuite
 import org.slf4j.LoggerFactory
 
-class GenNameSuite extends FunSuite {
-  private val LOG = LoggerFactory.getLogger(getClass)
-
+class GenNameSuite extends FunSuite with Logging {
   test("genName") {
     val name = GenName.genName("test")
     LOG.info(s"GenName: $name")

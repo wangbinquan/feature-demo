@@ -1,14 +1,10 @@
 package org.wbq.common.util.date
 
-import java.sql.Timestamp
-
 import org.junit.Assert
 import org.scalatest.FunSuite
-import org.slf4j.LoggerFactory
+import org.wbq.common.util.Logging
 
-class DateUtilSuite extends FunSuite {
-  private val LOG = LoggerFactory.getLogger(getClass)
-
+class DateUtilSuite extends FunSuite with Logging {
   test("dateMatcher") {
     val cronExprs = Array("14 56 23 25 6 ? 2017")
     val matcher = DateUtil.getDateMatcher(cronExprs)
