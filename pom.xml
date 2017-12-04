@@ -10,6 +10,7 @@
         <module>common</module>
         <module>antlr4</module>
         <module>cglib-demo</module>
+        <module>akka</module>
     </modules>
 
     <properties>
@@ -151,6 +152,16 @@
                 <groupId>com.univocity</groupId>
                 <artifactId>univocity-parsers</artifactId>
                 <version>${univocity.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.typesafe.akka</groupId>
+                <artifactId>akka-actor_${scala.binary.version}</artifactId>
+                <version>2.5.7</version>
+            </dependency>
+            <dependency>
+                <groupId>com.typesafe.akka</groupId>
+                <artifactId>akka-remote_${scala.binary.version}</artifactId>
+                <version>2.5.7</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
