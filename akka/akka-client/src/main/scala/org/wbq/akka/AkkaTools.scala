@@ -9,27 +9,27 @@ import org.wbq.common.util.Logging
 
 import scala.collection.JavaConverters._
 
-object AkkaTools extends Logging{
+object AkkaTools extends Logging {
   def builder(): AkkaActorBuilder = new AkkaActorBuilder()
 
   def akkaUrlOf(serviceName: String, host: String, port: Int, actorName: String): String = {
     "akka.tcp://" + serviceName + "@" + host + ":" + port + "/user/" + actorName
   }
 
-  class AkkaActorBuilder{
+  class AkkaActorBuilder {
     private var name = "defaultName"
     private val confMap = new util.HashMap[String, Object]()
 
     private val remoteTransports = new util.ArrayList[String]()
     remoteTransports.add("akka.remote.netty.tcp")
-    confMap .put("akka.remote.enabled-transports", remoteTransports)
-    confMap .put(AkkaProps.MAX_FRAME_SIZE, Integer.valueOf(100 * 1024 * 1024))
-    confMap .put("akka.actor.default-dispatcher.fork-join-executor.parallelism-factor", "50")
-    confMap .put("akka.actor.default-dispatcher.fork-join-executor.parallelism-max", "50")
-//    confMap .put("akka.actor.provider", "remote")
-    confMap .put("akka.actor.remote.log-sent-messages", "on")
-    confMap .put("akka.actor.remote.log-received-messages", "on")
-    confMap .put("akka.actor.provider", "akka.remote.RemoteActorRefProvider")
+    confMap.put("akka.remote.enabled-transports", remoteTransports)
+    confMap.put(AkkaProps.MAX_FRAME_SIZE, Integer.valueOf(100 * 1024 * 1024))
+    confMap.put("akka.actor.default-dispatcher.fork-join-executor.parallelism-factor", "50")
+    confMap.put("akka.actor.default-dispatcher.fork-join-executor.parallelism-max", "50")
+    //    confMap .put("akka.actor.provider", "remote")
+    confMap.put("akka.actor.remote.log-sent-messages", "on")
+    confMap.put("akka.actor.remote.log-received-messages", "on")
+    confMap.put("akka.actor.provider", "akka.remote.RemoteActorRefProvider")
 
 
     def name(name: String): this.type = {
@@ -37,8 +37,8 @@ object AkkaTools extends Logging{
       this
     }
 
-    def set(key: String, value: Object): this.type ={
-      confMap .put(key, value)
+    def set(key: String, value: Object): this.type = {
+      confMap.put(key, value)
       this
     }
 
@@ -72,7 +72,7 @@ object AkkaTools extends Logging{
       val startPort = 20000
       var currentPort = startPort
       var actorSystem: Option[ActorSystem] = None
-      while(actorSystem.isEmpty && currentPort - startPort < maxTry) {
+      while (actorSystem.isEmpty && currentPort - startPort < maxTry) {
         actorSystem = tryBuild(currentPort)
         currentPort += 1
       }
@@ -95,6 +95,7 @@ object AkkaTools extends Logging{
       }
     }
   }
+
 }
 
 object AkkaProps {

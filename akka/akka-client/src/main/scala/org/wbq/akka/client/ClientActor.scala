@@ -1,17 +1,19 @@
 package org.wbq.akka.client
 
 import akka.actor.{Actor, ActorRef}
-import org.wbq.akka.{AkkaTools, RegistClient}
+import org.wbq.akka._
 import org.wbq.common.util.Logging
 
-class ClientActor extends Actor with Logging{
+class ClientActor extends Actor with Logging {
   override def receive = {
-    case s: String => {
-      LOG.info(s"Get String[$s]")
+    case r@RegistedClient(master: ActorRef) => {
+      LOG.info(s"Regist client to [$master] success")
     }
-    case master: ActorRef =>{
-      master ! RegistClient(context.system.settings.config.getString("akka.remote.netty.tcp.hostname"),
-        context.system.settings.config.getInt("akka.remote.netty.tcp.port"), context.system.settings.name, self.path.name)
+    case r@RunClass(classRunId: String, className: String, classPath: String, send: ActorRef) =>{
+
+    }
+    case d@DestroyClient(send: ActorRef) =>{
+
     }
   }
 }
