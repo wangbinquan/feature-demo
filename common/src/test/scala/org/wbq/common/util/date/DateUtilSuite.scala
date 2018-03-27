@@ -1,9 +1,12 @@
 package org.wbq.common.util.date
 
 import org.junit.Assert
+import org.junit.runner.RunWith
 import org.scalatest.FunSuite
+import org.scalatest.junit.JUnitRunner
 import org.wbq.common.util.Logging
 
+@RunWith(classOf[JUnitRunner])
 class DateUtilSuite extends FunSuite with Logging {
   test("dateMatcher") {
     val cronExprs = Array("14 56 23 25 6 ? 2017")

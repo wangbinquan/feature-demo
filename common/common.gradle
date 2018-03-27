@@ -1,0 +1,15 @@
+dependencies {
+    compile "org.scala-lang:scala-library:${scala_version}"
+    compile "org.scala-lang.modules:scala-xml_${scala_binary_version}:1.0.6"
+    compile "org.scala-lang.modules:scala-parser-combinators_${scala_binary_version}:1.0.5"
+    compile "org.scala-lang.modules:scala-swing_${scala_binary_version}:2.0.0"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jackson_version}"
+
+    compile "com.fasterxml.jackson.module:jackson-module-scala_${scala_binary_version}:${jackson_version}"
+    compile "com.fasterxml.jackson.module:jackson-module-parameter-names:${jackson_version}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${jackson_version}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jackson_version}"
+    compile "org.quartz-scheduler:quartz:${quartz_version}"
+    compile "com.univocity:univocity-parsers:${univocity_version}"
+    compile "com.google.guava:guava:${guava_version}"
+}

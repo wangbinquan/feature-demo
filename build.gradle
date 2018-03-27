@@ -1,0 +1,106 @@
+
+plugins {
+	id "org.jetbrains.kotlin.jvm" version "1.2.30" apply false
+}
+
+configure(allprojects) { project ->
+	group = "org.wbq"
+	version = "1.0-SNAPSHOT"
+    ext.scala_version = "2.11.8"
+    ext.scala_binary_version = "2.11"
+    ext.jackson_version = "2.9.1"
+    ext.cglib_version = "3.2.5"
+    ext.antlr4_version = "4.5.3"
+    ext.quartz_version = "2.3.0"
+    ext.univocity_version = "2.5.5"
+    ext.logback_version = "1.2.3"
+    ext.apache_common_lang3_version = "3.6"
+    ext.guava_version = "23.0"
+    ext.lombok_version = "1.16.18"
+    ext.lombok_plugin_version = "1.16.18.1"
+    ext.scala_test_version = "3.0.1"
+    ext.junit_version = "4.12"
+
+    apply plugin: 'java'
+    apply plugin: 'scala'
+    apply plugin: 'kotlin'
+
+    compileJava {
+        dependsOn('compileScala')
+		sourceCompatibility = 1.8
+		targetCompatibility = 1.8
+		options.encoding = 'UTF-8'
+	}
+
+	compileTestJava {
+		sourceCompatibility = 1.8
+		targetCompatibility = 1.8
+		options.encoding = 'UTF-8'
+		options.compilerArgs += "-parameters"
+	}
+
+	compileScala {
+        dependsOn = dependsOn - 'compileJava'
+		sourceCompatibility = 1.8
+		targetCompatibility = 1.8
+		options.encoding = 'UTF-8'
+	}
+
+	compileTestScala {
+		sourceCompatibility = 1.8
+		targetCompatibility = 1.8
+		options.encoding = 'UTF-8'
+		options.compilerArgs += "-parameters"
+	}
+
+    compileKotlin {
+		kotlinOptions {
+			jvmTarget = "1.8"
+			freeCompilerArgs = ["-Xjsr305=strict"]
+			apiVersion = "1.1"
+			languageVersion = "1.1"
+		}
+	}
+	compileTestKotlin {
+		kotlinOptions {
+			jvmTarget = "1.8"
+			freeCompilerArgs = ["-Xjsr305=strict"]
+		}
+	}
+
+    sourceSets {
+        main {
+            scala {
+                srcDirs = ['src/main/scala', 'src/main/java']
+            }
+            java {
+                srcDirs = []
+            }
+        }
+        test {
+            scala {
+                srcDirs = ['src/test/scala', 'src/test/java']
+            }
+            java {
+                srcDirs = []
+            }
+        }
+    }
+
+	repositories {
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+
+	dependencies {
+		compile "org.scala-lang:scala-library:${scala_version}"
+		compile "ch.qos.logback:logback-core:${logback_version}"
+		compile "ch.qos.logback:logback-classic:${logback_version}"
+		compile "org.apache.commons:commons-lang3:${apache_common_lang3_version}"
+		compile "org.projectlombok:lombok:${lombok_version}"
+//        testCompile "org.scalamock:scalamock_${scala_binary_version}:${scala_test_version}"
+		testCompile "org.scalactic:scalactic_${scala_binary_version}:${scala_test_version}"
+		testCompile "org.scalatest:scalatest_${scala_binary_version}:${scala_test_version}"
+		testCompile "junit:junit:${junit_version}"
+	}
+}

@@ -1,0 +1,7 @@
+configure(subprojects) { prj ->
+    dependencies {
+        compile project(":common")
+        compile "com.typesafe.akka:akka-actor_${scala_binary_version}:2.5.7"
+        compile "com.typesafe.akka:akka-remote_${scala_binary_version}:2.5.7"
+    }
+}

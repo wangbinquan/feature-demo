@@ -1,0 +1,6 @@
+
+
+dependencies {
+    compile project(":common")
+    compile "cglib:cglib:${cglib_version}"
+}

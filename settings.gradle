@@ -1,0 +1,26 @@
+
+
+pluginManagement {
+	repositories {
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+		jcenter()
+		gradlePluginPortal()
+	}
+}
+
+include 'common'
+include 'antlr4'
+include 'cglib-demo'
+//include 'akka'
+include ':akka-msg-modle'
+include ':akka-client'
+include ':akka-master'
+project(':akka-msg-modle').projectDir = new File(settingsDir, 'akka/akka-msg-modle')
+project(':akka-client').projectDir = new File(settingsDir, 'akka/akka-client')
+project(':akka-master').projectDir = new File(settingsDir, 'akka/akka-master')
+
+rootProject.name = 'feature-demo'
+
+rootProject.children.each {project ->
+	project.buildFileName = "${project.name}.gradle"
+}

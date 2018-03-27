@@ -55,6 +55,7 @@ object DateUtil {
     new DateMatcher(cronExprs.map(new CronExpression(_)))
   }
 
+  @SuppressWarnings(Array("deprecation"))
   def dateOf(year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int, nano: Int): Date = {
     new Timestamp(year - 1900, month - 1, day, hour, minute, second, nano)
   }

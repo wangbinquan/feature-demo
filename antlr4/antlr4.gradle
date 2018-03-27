@@ -1,0 +1,27 @@
+apply plugin: 'antlr'
+
+dependencies {
+    compile project(":common")
+    antlr "org.antlr:antlr4:${antlr4_version}"
+}
+
+sourceSets {
+    main {
+        antlr {
+            srcDirs = ['src/main/antlr4']
+        }
+        scala {
+            srcDirs = ["${buildDir}/generated-src/antlr/main" ,'src/main/scala', 'src/main/java']
+        }
+    }
+}
+
+generateGrammarSource {
+    maxHeapSize = "64m"
+    arguments += ["-visitor", "-long-messages"]
+}
+
+compileScala.dependsOn(generateGrammarSource)
+
+
+

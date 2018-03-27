@@ -1,13 +1,16 @@
 package org.wbq.antlr4
 
 import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
+import org.junit.runner.RunWith
 import org.scalatest.FunSuite
+import org.scalatest.junit.JUnitRunner
 import org.wbq.antlr4.node.TreeNode
 import org.wbq.common.util.Logging
 
 /**
   * Created by Administrator on 2017/1/21 0021.
   */
+@RunWith(classOf[JUnitRunner])
 class antlr4ParserSuite extends FunSuite with Logging {
   test("Add"){
     val input = new ANTLRInputStream("a + 2")
