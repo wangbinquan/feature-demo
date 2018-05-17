@@ -1,5 +1,7 @@
 # feature-demo
 
+[![Build Status](https://travis-ci.org/wangbinquan/feature-demo.svg?branch=master)](https://travis-ci.org/wangbinquan/feature-demo)
+
 Test some frature in lib
 
 1.antlr4
