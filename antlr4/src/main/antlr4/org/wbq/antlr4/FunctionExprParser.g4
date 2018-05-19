@@ -1,8 +1,8 @@
 grammar FunctionExprParser;
 
-@header {
-package org.wbq.antlr4;
-}
+//@header {
+//package org.wbq.antlr4;
+//}
 
 exp: term
 | exp op = (ADD | SUB) exp;
