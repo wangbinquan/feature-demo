@@ -7,7 +7,7 @@ public class Attach {
         try {
             int pid = Integer.parseInt(args[1]);
             VirtualMachine attach = VirtualMachine.attach(String.valueOf(pid));
-            attach.loadAgent("javaagent-client-1.0-SNAPSHOT.jar");
+            attach.loadAgent("javaagent-agent-1.0-SNAPSHOT-jar-with-dependencies.jar");
         } catch (Exception e) {
             e.printStackTrace();
         }

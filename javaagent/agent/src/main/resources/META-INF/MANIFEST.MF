@@ -1,0 +1,6 @@
+Premain-Class: org.wbq.javaagent.agent.AgentMain
+Agent-Class: org.wbq.javaagent.agent.AgentMain
+Main-Class: org.wbq.javaagent.agent.AgentMain
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+Can-Set-Native-Method-Prefix: true

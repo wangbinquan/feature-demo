@@ -7,7 +7,7 @@
         <version>2.7.1</version>
         <relativePath/>
     </parent>
-    <artifactId>javaagent-agent</artifactId>
+    <artifactId>javaagent-client</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
