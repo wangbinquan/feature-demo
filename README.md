@@ -14,5 +14,5 @@ Test some frature in lib
 >akka远程调用尝试代码，已成功发送信息
 
 4.javaagent
->javaagnet注入测试
+>javaagnet/bytebuddy运行时注入
 
