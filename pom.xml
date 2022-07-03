@@ -11,6 +11,7 @@
         <module>antlr4</module>
         <module>cglib-demo</module>
         <module>akka</module>
+        <module>javaagent</module>
     </modules>
 
     <properties>
