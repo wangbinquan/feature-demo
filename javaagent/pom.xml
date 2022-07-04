@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>client_aop</module>
         <module>client</module>
         <module>agent</module>
         <module>attach</module>

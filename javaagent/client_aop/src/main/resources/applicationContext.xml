@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:config>
+        <!--声明切入点-->
+        <aop:pointcut id="helloFunc" expression="execution(* org.wbq.javaagent.client.controller.Hello.hello())"/>
+        <!--声明txManager为切面类-->
+        <aop:aspect ref="helloAop">
+            <!--通知策略-->
+            <aop:before method="begin" pointcut-ref="helloFunc"/>
+            <aop:around method="around" pointcut-ref="helloFunc"/>
+            <aop:after method="end" pointcut-ref="helloFunc"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
+
