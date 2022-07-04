@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Hello {
     @GetMapping(value = "/hello")
-    public String hello() {
+    // 这里final表现不同
+    public /*final*/ String hello() {
         return "hello world";
     }
 }
