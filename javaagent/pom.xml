@@ -12,6 +12,7 @@
     <modules>
         <module>client_aop</module>
         <module>client</module>
+        <module>client_mock</module>
         <module>agent</module>
         <module>attach</module>
     </modules>
