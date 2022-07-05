@@ -28,8 +28,8 @@ public class AgentMain {
     /**
      * retransformClass
      *
-     * @param arg
-     * @param instrumentation
+     * @param arg arg
+     * @param instrumentation instrumentation
      */
     public static void agentmain(String arg, Instrumentation instrumentation) {
         System.out.println("Call AgentMain Func");
@@ -46,8 +46,8 @@ public class AgentMain {
     /**
      * redefineClass
      *
-     * @param arg
-     * @param instrumentation
+     * @param arg arg
+     * @param instrumentation instrumentation
      */
     public static void agentmain_redefineClass(String arg, Instrumentation instrumentation) {
         System.out.println("Call AgentMain Func");
@@ -71,8 +71,8 @@ public class AgentMain {
     /**
      * hotfix
      *
-     * @param arg
-     * @param instrumentation
+     * @param arg arg
+     * @param instrumentation instrumentation
      */
     public static void agentmain_hotfix(String arg, Instrumentation instrumentation) {
         System.out.println("Call AgentMain Func");
@@ -86,6 +86,8 @@ public class AgentMain {
                 System.out.println("Class Error: " + entry.getKey());
                 continue;
             }
+
+            System.out.println("Redefine Class: " + entry.getKey());
 
             try {
                 ClassDefinition classDefinition = new ClassDefinition(Class.forName(entry.getKey()), classBytes);
