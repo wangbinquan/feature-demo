@@ -15,5 +15,6 @@
         <module>client_mock</module>
         <module>agent</module>
         <module>attach</module>
+        <module>runcodeagent</module>
     </modules>
 </project>

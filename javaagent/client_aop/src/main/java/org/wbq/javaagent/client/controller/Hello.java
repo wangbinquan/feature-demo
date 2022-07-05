@@ -8,6 +8,7 @@ public class Hello {
     @GetMapping(value = "/hello")
     // 这里final表现不同
     public /*final*/ String hello() {
+        System.out.println("Call Hello Func");
         return "hello world";
     }
 }

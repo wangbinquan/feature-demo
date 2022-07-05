@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Hello {
     @GetMapping(value = "/hello")
     public String hello() {
+        System.out.println("Call Hello Func");
         return "hello world";
     }
 }
