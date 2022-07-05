@@ -12,6 +12,7 @@ import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.UUID;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
@@ -19,14 +20,17 @@ import java.util.jar.Manifest;
 public class RunCode {
     public static void main(String[] args) {
         try {
-            for(VirtualMachineDescriptor virtualMachine: VirtualMachine.list()) {
+            Files.deleteIfExists(Paths.get("out.txt"));
+            for (VirtualMachineDescriptor virtualMachine : VirtualMachine.list()) {
                 if ("org.wbq.javaagent.client.ApplicationMain".equals(virtualMachine.displayName())) {
                     int pid = Integer.parseInt(virtualMachine.id());
-                    writeAgentJar();
+                    String jarPath = writeAgentJar();
                     VirtualMachine attach = VirtualMachine.attach(String.valueOf(pid));
-                    attach.loadAgent("agent.jar");
+                    attach.loadAgent(jarPath);
                     attach.detach();
+                    Files.deleteIfExists(Paths.get(jarPath));
                     System.out.println(new String(Files.readAllBytes(Paths.get("out.txt"))));
+                    Files.deleteIfExists(Paths.get("out.txt"));
                     return;
                 }
             }
@@ -35,9 +39,10 @@ public class RunCode {
         }
     }
 
-    private static void writeAgentJar() throws IOException {
+    private static String writeAgentJar() throws IOException {
+        String jarName = UUID.randomUUID().toString().replace("-", "") + ".jar";
         JarOutputStream jarOutputStream = new JarOutputStream(
-                Files.newOutputStream(Paths.get("agent.jar")),
+                Files.newOutputStream(Paths.get(jarName)),
                 new Manifest() {{
                     getMainAttributes().putValue("Manifest-Version", "1.0");
                     getMainAttributes().putValue("Agent-Class", "org.wbq.javaagent.runcode.Agent");
@@ -57,6 +62,7 @@ public class RunCode {
         inputStream.close();
         jarOutputStream.write(byteArrayOutputStream.toByteArray());
         jarOutputStream.close();
+        return jarName;
     }
 }
 
