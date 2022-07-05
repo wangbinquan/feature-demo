@@ -14,5 +14,7 @@ Test some frature in lib
 >akka远程调用尝试代码，已成功发送信息
 
 4.javaagent
->javaagnet/bytebuddy运行时注入
+>javaagnet/bytebuddy运行时注入(agent/attach/client)
+>异进程代码执行(runcodeagent)
+>热补丁替换(agent/attach/client_mock)
 

@@ -25,6 +25,12 @@ public class AgentMain {
         instrumentation.addTransformer(new Transformer());
     }
 
+    /**
+     * retransformClass
+     *
+     * @param arg
+     * @param instrumentation
+     */
     public static void agentmain(String arg, Instrumentation instrumentation) {
         System.out.println("Call AgentMain Func");
 
@@ -37,7 +43,13 @@ public class AgentMain {
         }
     }
 
-    public static void agentmain_bakk(String arg, Instrumentation instrumentation) {
+    /**
+     * redefineClass
+     *
+     * @param arg
+     * @param instrumentation
+     */
+    public static void agentmain_redefineClass(String arg, Instrumentation instrumentation) {
         System.out.println("Call AgentMain Func");
         try {
             final ClassPool classPool = ClassPool.getDefault();
@@ -56,7 +68,13 @@ public class AgentMain {
         }
     }
 
-    public static void agentmain_bakkk(String arg, Instrumentation instrumentation) {
+    /**
+     * hotfix
+     *
+     * @param arg
+     * @param instrumentation
+     */
+    public static void agentmain_hotfix(String arg, Instrumentation instrumentation) {
         System.out.println("Call AgentMain Func");
         Map<String, byte[]> clazzMap =
                 JarLoader.loadJarClass("./javaagent/client_mock/target/javaagent-client_mock-2.7.1.jar.original");
