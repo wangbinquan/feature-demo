@@ -8,11 +8,8 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <aop:config>
-        <!--声明切入点-->
         <aop:pointcut id="helloFunc" expression="execution(* org.wbq.javaagent.client.controller.Hello.hello())"/>
-        <!--声明txManager为切面类-->
         <aop:aspect ref="helloAop">
-            <!--通知策略-->
             <aop:before method="begin" pointcut-ref="helloFunc"/>
             <aop:around method="around" pointcut-ref="helloFunc"/>
             <aop:after method="end" pointcut-ref="helloFunc"/>
